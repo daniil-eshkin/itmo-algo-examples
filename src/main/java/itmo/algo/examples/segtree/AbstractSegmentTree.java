@@ -58,7 +58,7 @@ public abstract class AbstractSegmentTree<V, D> {
                 return aggregator.apply(
                         get(t.getL(), l, tm, tl, tm),
                         get(t.getR(), tm, r, tm, tr),
-                        tl, tr
+                        l, tm, r
                 );
             }
         }
@@ -83,8 +83,8 @@ public abstract class AbstractSegmentTree<V, D> {
                 set(t.getL(), l, tm, d, tl, tm);
                 set(t.getR(), tm, r, d, tm, tr);
             }
+            pullUp(t, tl, tm, tr);
         }
-        pullUp(t, tl, tr);
     }
 
     /**
@@ -96,9 +96,9 @@ public abstract class AbstractSegmentTree<V, D> {
     /**
      * Обновляет V из сыновей
      */
-    private void pullUp(Node<V, D> t, int tl, int tr) {
+    private void pullUp(Node<V, D> t, int tl, int tm, int tr) {
         assert t.getL() != null && t.getR() != null;
 
-        t.setValue(aggregator.apply(t.getL().getValue(), t.getR().getValue(), tl, tr));
+        t.setValue(aggregator.apply(t.getL().getValue(), t.getR().getValue(), tl, tm, tr));
     }
 }

@@ -61,7 +61,7 @@ public class SegmentTree<V, D> extends AbstractSegmentTree<V, D> {
                     build(initialValues, aggregator, zeroDelegate, tl, tm),
                     build(initialValues, aggregator, zeroDelegate, tm, tr),
                     aggregator,
-                    tl, tr,
+                    tl, tm, tr,
                     zeroDelegate
             );
         }

@@ -20,9 +20,9 @@ public class Node<V, D> {
 
     public Node(Node<V, D> l, Node<V, D> r,
                 ValueAggregator<V, Integer> aggregator,
-                int tl, int tr,
+                int tl, int tm, int tr,
                 D delegate) {
-        this.value = aggregator.apply(l.value, r.value, tl, tr);
+        this.value = aggregator.apply(l.value, r.value, tl, tm, tr);
         this.delegate = delegate;
         this.l = l;
         this.r = r;

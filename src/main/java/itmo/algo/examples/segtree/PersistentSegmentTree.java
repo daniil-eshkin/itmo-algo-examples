@@ -101,7 +101,7 @@ public class PersistentSegmentTree<V, D> extends AbstractSegmentTree<V, D> {
                 return aggregator.apply(
                         get(t.getL(), l, tm, delegate, tl, tm),
                         get(t.getR(), tm, r, delegate, tm, tr),
-                        tl, tr
+                        l, tm, r
                 );
             }
         }
@@ -134,7 +134,7 @@ public class PersistentSegmentTree<V, D> extends AbstractSegmentTree<V, D> {
                     aggregator.apply(
                             getActualValue(left, tl, tm),
                             getActualValue(right, tm, tr),
-                            tl, tr
+                            tl, tm, tr
                     ),
                     t.getDelegate(),
                     left,
